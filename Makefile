@@ -25,11 +25,11 @@ endif
 K3D_IMAGE_TAG := $(GIT_TAG)
 
 # get latest k3s version: grep the tag and replace + with - (difference between git and dockerhub tags)
-K3S_TAG		:= $(shell curl --silent "https://update.k3s.io/v1-release/channels/stable" | egrep -o '/v[^ ]+"' | sed -E 's/\/|\"//g' | sed -E 's/\+/\-/')
+K3S_TAG		:= $(shell curl --silent "https://update.k3s.io/v1-release/channels/v1.17" | egrep -o '/v[^ ]+"' | sed -E 's/\/|\"//g' | sed -E 's/\+/\-/')
 
 ifeq ($(K3S_TAG),)
 $(warning K3S_TAG undefined: couldn't get latest k3s image tag!)
-$(warning Output of curl: $(shell curl --silent "https://update.k3s.io/v1-release/channels/stable"))
+$(warning Output of curl: $(shell curl --silent "https://update.k3s.io/v1-release/channels/v1.17"))
 $(error exiting)
 endif
 
